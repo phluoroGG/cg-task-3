@@ -1,6 +1,6 @@
 package edu.csf.cg.LinearAlgebra;
 
-import static edu.csf.cg.LinearAlgebra.Constants.eps;
+import static edu.csf.cg.LinearAlgebra.Constants.EPS;
 
 public class Vector3f {
     float x;
@@ -20,9 +20,9 @@ public class Vector3f {
     }
 
     public boolean equals(Vector3f other) {
-        return Math.abs(x - other.x) <= eps &&
-                Math.abs(y - other.y) <= eps &&
-                Math.abs(z - other.z) <= eps;
+        return Math.abs(x - other.x) <= EPS &&
+                Math.abs(y - other.y) <= EPS &&
+                Math.abs(z - other.z) <= EPS;
     }
 
     public void add(Vector3f vector) {

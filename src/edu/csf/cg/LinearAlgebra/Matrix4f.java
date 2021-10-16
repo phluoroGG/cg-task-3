@@ -1,7 +1,7 @@
 package edu.csf.cg.LinearAlgebra;
 
 import java.util.Arrays;
-import static edu.csf.cg.LinearAlgebra.Constants.eps;
+import static edu.csf.cg.LinearAlgebra.Constants.EPS;
 
 public class Matrix4f {
     float[][] matrix;
@@ -42,7 +42,7 @@ public class Matrix4f {
     public boolean equals(Matrix4f other) {
         for (int i = 0; i < this.matrix.length; i++) {
             for (int j = 0; j < this.matrix[0].length; j++) {
-                if (Math.abs(this.matrix[i][j] - other.matrix[i][j]) > eps) {
+                if (Math.abs(this.matrix[i][j] - other.matrix[i][j]) > EPS) {
                     return false;
                 }
             }
