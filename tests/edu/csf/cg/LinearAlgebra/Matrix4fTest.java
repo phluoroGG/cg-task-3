@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 class Matrix4fTest {
 
     @Test
-    void testAdd01() {
+    void testAdd() {
         Matrix4f matrix1 = new Matrix4f(new float[][]{
                 {1, 2, 3, 4},
                 {5, 6, 7, 8},
@@ -23,7 +23,7 @@ class Matrix4fTest {
     }
 
     @Test
-    void testAdd02() {
+    void testAddFloat() {
         Matrix4f matrix1 = new Matrix4f(new float[][]{
                 {1.5f, 2.5f, 3.5f, 4.5f},
                 {5.5f, 6.5f, 7.5f, 8.5f},
@@ -40,7 +40,7 @@ class Matrix4fTest {
     }
 
     @Test
-    void testMinus01() {
+    void testMinus() {
         Matrix4f matrix1 = new Matrix4f(new float[][]{
                 {2, 3, 4, 5},
                 {6, 7, 8, 9},
@@ -57,7 +57,7 @@ class Matrix4fTest {
     }
 
     @Test
-    void testMinus02() {
+    void testMinusFloat() {
         Matrix4f matrix1 = new Matrix4f(new float[][]{
                 {2.75f, 3.75f, 4.75f, 5.75f},
                 {6.75f, 7.75f, 8.75f, 9.75f},
@@ -74,7 +74,7 @@ class Matrix4fTest {
     }
 
     @Test
-    void testMultiply01() {
+    void testMultiplyValue() {
         Matrix4f matrix = new Matrix4f(new float[][]{
                 {1, 2, 3, 4},
                 {5, 6, 7, 8},
@@ -91,7 +91,7 @@ class Matrix4fTest {
     }
 
     @Test
-    void testMultiply02() {
+    void testMultiplyFloatValue() {
         Matrix4f matrix = new Matrix4f(new float[][]{
                 {1.5f, 2.5f, 3.5f, 4.5f},
                 {5.5f, 6.5f, 7.5f, 8.5f},
@@ -108,7 +108,7 @@ class Matrix4fTest {
     }
 
     @Test
-    void testMultiply03() {
+    void testMultiplyZeroValue() {
         Matrix4f matrix = new Matrix4f(1);
         float k = 0;
         matrix.multiply(k);
@@ -117,7 +117,7 @@ class Matrix4fTest {
     }
 
     @Test
-    void testMultiply04() {
+    void testMultiplyVector() {
         Matrix4f matrix = new Matrix4f(new float[][]{
                 {1, 2, 3, 4},
                 {5, 6, 7, 8},
@@ -130,7 +130,7 @@ class Matrix4fTest {
     }
 
     @Test
-    void testMultiply05() {
+    void testMultiplyFloatVector() {
         Matrix4f matrix = new Matrix4f(new float[][]{
                 {1.5f, 2.5f, 3.5f, 4.5f},
                 {5.5f, 6.5f, 7.5f, 8.5f},
@@ -143,7 +143,7 @@ class Matrix4fTest {
     }
 
     @Test
-    void testMultiply06() {
+    void testMultiplyZeroVector() {
         Matrix4f matrix = new Matrix4f(1);
         Vector4f vector = new Vector4f(0, 0, 0, 0);
         Vector4f result = matrix.multiply(vector);
@@ -152,7 +152,7 @@ class Matrix4fTest {
     }
 
     @Test
-    void testMultiply07() {
+    void testMultiplyIdentityMatrix() {
         Matrix4f matrix1 = new Matrix4f(1);
         Matrix4f matrix2 = new Matrix4f(true);
         matrix1.multiply(matrix2);
@@ -161,7 +161,7 @@ class Matrix4fTest {
     }
 
     @Test
-    void testMultiply08() {
+    void testMultiplyZeroMatrix() {
         Matrix4f matrix1 = new Matrix4f(1);
         Matrix4f matrix2 = new Matrix4f();
         matrix1.multiply(matrix2);
@@ -170,7 +170,7 @@ class Matrix4fTest {
     }
 
     @Test
-    void testMultiply09() {
+    void testMultiplyMatrix() {
         Matrix4f matrix1 = new Matrix4f(new float[][]{
                 {1, 2, 3, 4},
                 {5, 6, 7, 8},
@@ -191,7 +191,7 @@ class Matrix4fTest {
     }
 
     @Test
-    void testDivide01() {
+    void testDivide() {
         Matrix4f matrix = new Matrix4f(new float[][]{
                 {3, 6, 9, 12},
                 {15, 18, 21, 24},
@@ -208,7 +208,7 @@ class Matrix4fTest {
     }
 
     @Test
-    void testDivide02() {
+    void testDivideFloat() {
         Matrix4f matrix = new Matrix4f(new float[][]{
                 {4.5f, 7.5f, 10.5f, 13.5f},
                 {16.5f, 19.5f, 22.5f, 25.5f},
@@ -225,14 +225,14 @@ class Matrix4fTest {
     }
 
     @Test
-    void testDivide03() {
+    void testDivideZero() {
         Matrix4f matrix = new Matrix4f(1);
         float k = 0;
         Assertions.assertThrows(AssertionError.class, () -> matrix.divide(k));
     }
 
     @Test
-    void testTranspose01() {
+    void testTranspose() {
         Matrix4f matrix = new Matrix4f(new float[][]{
                 {1, 2, 3, 4},
                 {5, 6, 7, 8},
@@ -248,7 +248,7 @@ class Matrix4fTest {
     }
 
     @Test
-    public void testDeterminant01() {
+    public void testDeterminant() {
         Matrix4f matrix = new Matrix4f(new float[][]{
                 {3, -2, 1, 1},
                 {5, 1, 2, 0},
@@ -260,7 +260,7 @@ class Matrix4fTest {
     }
 
     @Test
-    public void testInverse01() {
+    public void testInverse() {
         Matrix4f matrix = new Matrix4f(new float[][]{
                 {1, 2, 3, 4},
                 {0, 1, -3, 0},
@@ -276,7 +276,7 @@ class Matrix4fTest {
     }
 
     @Test
-    public void testInverse02() {
+    public void testInverseMatrixMultiplication() {
         Matrix4f matrix = new Matrix4f(new float[][]{
                 {1, 2, 3, 4},
                 {0, 1, -3, 0},
@@ -290,7 +290,7 @@ class Matrix4fTest {
     }
 
     @Test
-    public void testSolveGaussian01() {
+    public void testSolveGaussianOneSolution() {
         Matrix4f matrix = new Matrix4f(new float[][]{
                 {2, 5, 4, 1},
                 {1, 3, 2, 1},
@@ -303,7 +303,7 @@ class Matrix4fTest {
     }
 
     @Test
-    public void testSolveGaussian02() {
+    public void testSolveGaussianZeroSolution() {
         Matrix4f matrix = new Matrix4f(new float[][]{
                 {4, -3, 2, -1},
                 {3, -2, 1, -3},
@@ -314,7 +314,7 @@ class Matrix4fTest {
     }
 
     @Test
-    public void testSolveGaussian03() {
+    public void testSolveGaussianManySolution() {
         Matrix4f matrix = new Matrix4f(new float[][]{
                 {2, 3, -1, 1},
                 {8, 12, -9, 8},

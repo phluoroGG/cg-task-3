@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 class Vector3fTest {
 
     @Test
-    void testAdd01() {
+    void testAdd() {
         Vector3f vector1 = new Vector3f(1, 2, 3);
         Vector3f vector2 = new Vector3f(3, 2, 1);
         vector1.add(vector2);
@@ -15,7 +15,7 @@ class Vector3fTest {
     }
 
     @Test
-    void testAdd02() {
+    void testAddFloat() {
         Vector3f vector1 = new Vector3f(1.25f, 2.5f, 3.75f);
         Vector3f vector2 = new Vector3f(2.5f, 3.25f, 3.75f);
         vector1.add(vector2);
@@ -24,7 +24,7 @@ class Vector3fTest {
     }
 
     @Test
-    void testMinus01() {
+    void testMinus() {
         Vector3f vector1 = new Vector3f(4, 4, 4);
         Vector3f vector2 = new Vector3f(3, 2, 1);
         vector1.minus(vector2);
@@ -33,7 +33,7 @@ class Vector3fTest {
     }
 
     @Test
-    void testMinus02() {
+    void testMinusFloat() {
         Vector3f vector1 = new Vector3f(3.75f, 5.75f, 7.5f);
         Vector3f vector2 = new Vector3f(2.5f, 3.25f, 3.75f);
         vector1.minus(vector2);
@@ -42,7 +42,7 @@ class Vector3fTest {
     }
 
     @Test
-    void testMultiply01() {
+    void testMultiply() {
         Vector3f vector = new Vector3f(1, 2, 3);
         float k = 3;
         vector.multiply(k);
@@ -51,7 +51,7 @@ class Vector3fTest {
     }
 
     @Test
-    void testMultiply02() {
+    void testMultiplyFloat() {
         Vector3f vector = new Vector3f(1.25f, 2.5f, 3.75f);
         float k = 3;
         vector.multiply(k);
@@ -60,7 +60,7 @@ class Vector3fTest {
     }
 
     @Test
-    void testDivide01() {
+    void testDivide() {
         Vector3f vector = new Vector3f(3, 6, 9);
         float k = 3;
         vector.divide(k);
@@ -69,7 +69,7 @@ class Vector3fTest {
     }
 
     @Test
-    void testDivide02() {
+    void testDivideFloat() {
         Vector3f vector = new Vector3f(3.75f, 7.5f, 11.25f);
         float k = 3;
         vector.divide(k);
@@ -78,14 +78,14 @@ class Vector3fTest {
     }
 
     @Test
-    void testDivide03() {
+    void testDivideZero() {
         Vector3f vector = new Vector3f(1, 1, 1);
         float k = 0;
         Assertions.assertThrows(AssertionError.class, () -> vector.divide(k));
     }
 
     @Test
-    void testLength01() {
+    void testLength() {
         Vector3f vector = new Vector3f(1, 2, 3);
         float result = vector.length();
         float expectedResult = (float) Math.sqrt(14);
@@ -93,7 +93,7 @@ class Vector3fTest {
     }
 
     @Test
-    void testLength02() {
+    void testLengthFloat() {
         Vector3f vector = new Vector3f(-1.5f, -2.5f, -3.5f);
         float result = vector.length();
         float expectedResult = (float) Math.sqrt(20.75f);
@@ -101,7 +101,7 @@ class Vector3fTest {
     }
 
     @Test
-    void testDotProduct01() {
+    void testDotProduct() {
         Vector3f vector1 = new Vector3f(1, 2, 3);
         Vector3f vector2 = new Vector3f(3, 2, 1);
         float result = vector1.dotProduct(vector2);
@@ -110,7 +110,7 @@ class Vector3fTest {
     }
 
     @Test
-    void testDotProduct02() {
+    void testDotProductFloat() {
         Vector3f vector1 = new Vector3f(-1.5f, -2.5f, -3.5f);
         Vector3f vector2 = new Vector3f(-1.5f, -2.5f, 3.5f);
         float result = vector1.dotProduct(vector2);
@@ -119,7 +119,7 @@ class Vector3fTest {
     }
 
     @Test
-    void testCrossProduct01() {
+    void testCrossProduct() {
         Vector3f vector1 = new Vector3f(1, 2, 3);
         Vector3f vector2 = new Vector3f(3, 2, 1);
         Vector3f result = vector1.crossProduct(vector2);
@@ -128,7 +128,7 @@ class Vector3fTest {
     }
 
     @Test
-    void testCrossProduct02() {
+    void testCrossProductFloat() {
         Vector3f vector1 = new Vector3f(-1.5f, -2.5f, -3.5f);
         Vector3f vector2 = new Vector3f(-1.5f, -2.5f, 3.5f);
         Vector3f result = vector1.crossProduct(vector2);

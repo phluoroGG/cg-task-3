@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 class Matrix3fTest {
 
     @Test
-    void testAdd01() {
+    void testAdd() {
         Matrix3f matrix1 = new Matrix3f(new float[][]{
                 {1, 2, 3},
                 {4, 5, 6},
@@ -21,7 +21,7 @@ class Matrix3fTest {
     }
 
     @Test
-    void testAdd02() {
+    void testAddFloat() {
         Matrix3f matrix1 = new Matrix3f(new float[][]{
                 {1.5f, 2.5f, 3.5f},
                 {4.5f, 5.5f, 6.5f},
@@ -36,7 +36,7 @@ class Matrix3fTest {
     }
 
     @Test
-    void testMinus01() {
+    void testMinus() {
         Matrix3f matrix1 = new Matrix3f(new float[][]{
                 {2, 3, 4},
                 {5, 6, 7},
@@ -51,7 +51,7 @@ class Matrix3fTest {
     }
 
     @Test
-    void testMinus02() {
+    void testMinusFloat() {
         Matrix3f matrix1 = new Matrix3f(new float[][]{
                 {2.75f, 3.75f, 4.75f},
                 {5.75f, 6.75f, 7.75f},
@@ -66,7 +66,7 @@ class Matrix3fTest {
     }
 
     @Test
-    void testMultiply01() {
+    void testMultiplyValue() {
         Matrix3f matrix = new Matrix3f(new float[][]{
                 {1, 2, 3},
                 {4, 5, 6},
@@ -81,7 +81,7 @@ class Matrix3fTest {
     }
 
     @Test
-    void testMultiply02() {
+    void testMultiplyFloatValue() {
         Matrix3f matrix = new Matrix3f(new float[][]{
                 {1.5f, 2.5f, 3.5f},
                 {4.5f, 5.5f, 6.5f},
@@ -96,7 +96,7 @@ class Matrix3fTest {
     }
 
     @Test
-    void testMultiply03() {
+    void testMultiplyZeroValue() {
         Matrix3f matrix = new Matrix3f(1);
         float k = 0;
         matrix.multiply(k);
@@ -105,7 +105,7 @@ class Matrix3fTest {
     }
 
     @Test
-    void testMultiply04() {
+    void testMultiplyVector() {
         Matrix3f matrix = new Matrix3f(new float[][]{
                 {1, 2, 3},
                 {4, 5, 6},
@@ -117,7 +117,7 @@ class Matrix3fTest {
     }
 
     @Test
-    void testMultiply05() {
+    void testMultiplyFloatVector() {
         Matrix3f matrix = new Matrix3f(new float[][]{
                 {1.5f, 2.5f, 3.5f},
                 {4.5f, 5.5f, 6.5f},
@@ -129,7 +129,7 @@ class Matrix3fTest {
     }
 
     @Test
-    void testMultiply06() {
+    void testMultiplyZeroVector() {
         Matrix3f matrix = new Matrix3f(1);
         Vector3f vector = new Vector3f(0, 0, 0);
         Vector3f result = matrix.multiply(vector);
@@ -138,7 +138,7 @@ class Matrix3fTest {
     }
 
     @Test
-    void testMultiply07() {
+    void testMultiplyIdentityMatrix() {
         Matrix3f matrix1 = new Matrix3f(1);
         Matrix3f matrix2 = new Matrix3f(true);
         matrix1.multiply(matrix2);
@@ -147,7 +147,7 @@ class Matrix3fTest {
     }
 
     @Test
-    void testMultiply08() {
+    void testMultiplyZeroMatrix() {
         Matrix3f matrix1 = new Matrix3f(1);
         Matrix3f matrix2 = new Matrix3f();
         matrix1.multiply(matrix2);
@@ -156,7 +156,7 @@ class Matrix3fTest {
     }
 
     @Test
-    void testMultiply09() {
+    void testMultiplyMatrix() {
         Matrix3f matrix1 = new Matrix3f(new float[][]{
                 {1, 2, 3},
                 {4, 5, 6},
@@ -174,7 +174,7 @@ class Matrix3fTest {
     }
 
     @Test
-    void testDivide01() {
+    void testDivide() {
         Matrix3f matrix = new Matrix3f(new float[][]{
                 {3, 6, 9},
                 {12, 15, 18},
@@ -189,7 +189,7 @@ class Matrix3fTest {
     }
 
     @Test
-    void testDivide02() {
+    void testDivideFloat() {
         Matrix3f matrix = new Matrix3f(new float[][]{
                 {4.5f, 7.5f, 10.5f},
                 {13.5f, 16.5f, 19.5f},
@@ -204,14 +204,14 @@ class Matrix3fTest {
     }
 
     @Test
-    void testDivide03() {
+    void testDivideZero() {
         Matrix3f matrix = new Matrix3f(1);
         float k = 0;
         Assertions.assertThrows(AssertionError.class, () -> matrix.divide(k));
     }
 
     @Test
-    void testTranspose01() {
+    void testTranspose() {
         Matrix3f matrix = new Matrix3f(new float[][]{
                 {1, 2, 3},
                 {4, 5, 6},
@@ -225,7 +225,7 @@ class Matrix3fTest {
     }
 
     @Test
-    public void testDeterminant01() {
+    public void testDeterminant() {
         Matrix3f matrix = new Matrix3f(new float[][]{
                 {1, 2, 3},
                 {-2, 0, -2},
@@ -236,7 +236,7 @@ class Matrix3fTest {
     }
 
     @Test
-    public void testInverse01() {
+    public void testInverse() {
         Matrix3f matrix = new Matrix3f(new float[][]{
                 {2, 5, 7},
                 {6, 3, 4},
@@ -250,7 +250,7 @@ class Matrix3fTest {
     }
 
     @Test
-    public void testInverse02() {
+    public void testInverseMatrixMultiplication () {
         Matrix3f matrix = new Matrix3f(new float[][]{
                 {2, 5, 7},
                 {6, 3, 4},
@@ -263,7 +263,7 @@ class Matrix3fTest {
     }
 
     @Test
-    public void testSolveGaussian01() {
+    public void testSolveGaussianOneSolution() {
         Matrix3f matrix = new Matrix3f(new float[][]{
                 {3, 2, -5},
                 {2, -1, 3},
@@ -275,7 +275,7 @@ class Matrix3fTest {
     }
 
     @Test
-    public void testSolveGaussian02() {
+    public void testSolveGaussianZeroSolution() {
         Matrix3f matrix = new Matrix3f(new float[][]{
                 {4, -3, 2},
                 {3, -2, 1},
@@ -285,7 +285,7 @@ class Matrix3fTest {
     }
 
     @Test
-    public void testSolveGaussian03() {
+    public void testSolveGaussianManySolutions() {
         Matrix3f matrix = new Matrix3f(new float[][]{
                 {2, 3, -1},
                 {8, 12, -9},
