@@ -42,7 +42,7 @@ public class Matrix3f {
     public boolean equals(Matrix3f other) {
         for (int i = 0; i < this.matrix.length; i++) {
             for (int j = 0; j < this.matrix[0].length; j++) {
-                if (this.matrix[i][j] - other.matrix[i][j] > eps) {
+                if (Math.abs(this.matrix[i][j] - other.matrix[i][j]) > eps) {
                     return false;
                 }
             }
@@ -50,7 +50,7 @@ public class Matrix3f {
         return true;
     }
 
-    protected Matrix3f copy() {
+    public Matrix3f copy() {
         return new Matrix3f(this.matrix);
     }
 
@@ -92,13 +92,11 @@ public class Matrix3f {
     public void multiply(Matrix3f matrix) {
         float[][] values = new float[this.matrix.length][this.matrix[0].length];
         for (int i = 0; i < this.matrix.length; i++) {
-            int m = 0;
             for (int j = 0; j < this.matrix[0].length; j++) {
                 values[i][j] =
-                        this.matrix[i][0] * matrix.matrix[0][m] +
-                                this.matrix[i][1] * matrix.matrix[1][m] +
-                                this.matrix[i][2] * matrix.matrix[2][m];
-                m++;
+                        this.matrix[i][0] * matrix.matrix[0][j] +
+                        this.matrix[i][1] * matrix.matrix[1][j] +
+                        this.matrix[i][2] * matrix.matrix[2][j];
             }
         }
         for (int i = 0; i < this.matrix.length; i++) {
@@ -173,7 +171,7 @@ public class Matrix3f {
             }
         }
         for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
+            for (int j = 0; j < matrix[0].length; j++) {
                 if ((i + j) % 2 != 0) {
                     algebraicComplementValues[i * matrix.length  + j] *= -1;
                 }
@@ -198,6 +196,9 @@ public class Matrix3f {
                 if (divider == 0) {
                     if (swapped == matrix.length) {
                         emptyCols[i] = true;
+                        for (int j = 0; j < i; j++) {
+                            matrix[j][i] = 0;
+                        }
                         break;
                     } else {
                         float[] tempArr = new float[matrix.length];
@@ -214,9 +215,6 @@ public class Matrix3f {
                 }
             }
             if (emptyCols[i]) {
-                for (int j = 0; j < i; j++) {
-                    matrix[j][i] = 0;
-                }
                 continue;
             }
             for (int j = i; j < matrix[0].length; j++) {

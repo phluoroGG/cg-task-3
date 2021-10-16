@@ -42,7 +42,7 @@ public class Matrix4f {
     public boolean equals(Matrix4f other) {
         for (int i = 0; i < this.matrix.length; i++) {
             for (int j = 0; j < this.matrix[0].length; j++) {
-                if (this.matrix[i][j] - other.matrix[i][j] > eps) {
+                if (Math.abs(this.matrix[i][j] - other.matrix[i][j]) > eps) {
                     return false;
                 }
             }
@@ -50,7 +50,7 @@ public class Matrix4f {
         return true;
     }
 
-    protected Matrix4f copy() {
+    public Matrix4f copy() {
         return new Matrix4f(this.matrix);
     }
 
@@ -132,7 +132,7 @@ public class Matrix4f {
         return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
     }
 
-    public float determinant3(float[][] matrix) {
+    private float determinant3(float[][] matrix) {
         float[] values = new float[matrix.length];
         for (int i = 0; i < matrix.length; i++) {
             float[][] minorMatrix = new float[matrix.length - 1][matrix[0].length - 1];
@@ -192,7 +192,7 @@ public class Matrix4f {
             }
         }
         for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
+            for (int j = 0; j < matrix[0].length; j++) {
                 if ((i + j) % 2 != 0) {
                     algebraicComplementValues[i * matrix.length  + j] *= -1;
                 }
@@ -217,6 +217,9 @@ public class Matrix4f {
                 if (divider == 0) {
                     if (swapped == matrix.length) {
                         emptyCols[i] = true;
+                        for (int j = 0; j < i; j++) {
+                            matrix[j][i] = 0;
+                        }
                         break;
                     } else {
                         float[] tempArr = new float[matrix.length];
@@ -233,9 +236,6 @@ public class Matrix4f {
                 }
             }
             if (emptyCols[i]) {
-                for (int j = 0; j < i; j++) {
-                    matrix[j][i] = 0;
-                }
                 continue;
             }
             for (int j = i; j < matrix[0].length; j++) {
